@@ -1,0 +1,7 @@
+---
+date: "2019-01-01"
+title: "Hello world"
+category: "General"
+tags: ['gatsby', 'react', 'typescript', 'graphql']
+banner: ""
+image: "./image.png"
