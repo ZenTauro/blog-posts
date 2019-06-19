@@ -9,7 +9,7 @@ The development of the blog itself is done
 [here](https://github.com/ZenTauro/web-blog)
 
 # License
-All the blog posts are under the `CC by-sa 4.0` license, a
+All the blog posts are under the `CC-BY-SA-4.0` license, a
 copy of the license is included for convenience (it is not
 a substitute). The work is governed by the license found in
 this [link](https://creativecommons.org/licenses/by-sa/4.0/)
