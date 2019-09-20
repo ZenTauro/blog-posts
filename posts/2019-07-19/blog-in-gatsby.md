@@ -7,6 +7,7 @@ banner: "./banner.png"
 title: "Introduction to Gatsby"
 ---
 
+# Intro
 In this series I will detail how to build a blog with
 [Gatsby](https://www.gatsbyjs.org/ "Gatsby's official website").
 I'll go into the details of setting up the enviroment, the APIs
