@@ -2,7 +2,7 @@
 date: "2019-11-04"
 category: "Programming"
 tags: ['rant', 'programming']
-banner: ""
+banner: "./photo.png"
 image: "./photo.png"
 title: "What is programming?"
 ---
@@ -67,6 +67,27 @@ fundamental common denominator among them, they all closely represented a sequen
 of instructions based on sequential execution that resembled the processor operational
 model.
 
+```fortran
+! A fortran fizzbuzz example
+PROGRAM fizzbuzz
+      IMPLICIT NONE
+      INTEGER :: counter 
+      
+      DO counter=0,100
+          IF (MOD(counter,15) == 0) THEN
+              WRITE (*,'(A8)') "FizzBuzz"
+          ELSE IF (MOD(counter,5) == 0) THEN
+              WRITE (*,'(A4)') "Buzz"
+          ELSE IF (MOD(counter,3) == 0) THEN
+              WRITE (*,'(A4)') "Fizz"
+          ELSE 
+              WRITE (*,'(I2)') counter
+          END IF
+      END DO
+
+END PROGRAM fizzbuzz
+```
+
 During this era, the 1960s, a lot of the research in the artificial intelligence shifted
 towards a different model based on Lisp Machines. This machines were built upon a lisp
 interpreter that run on microprocessors. Thus, "emulating" a computer model on top of a
@@ -92,12 +113,39 @@ Lisp pioneered many computer concepts such as:
  - Conditionals
  - REPL
 
-During the 70's, after the appearance of Lisp, ML (Meta Language) started to take shape, this
-language was envisioned to aid the theorem prover LCF. Its syntax resembles the one of mathematical
-functions and while it permits a functional style, it is still impure and imperative, it makes heavy
-usage of pattern matching .
-Also, its
-type system includes algebraic data types, 
+```lisp
+;; A lisp fizzbuzz example
+(dotimes (run 100) 
+    (setq num (+ run 1))
+    (write-line (cond 
+        ((and (= (mod num 3) 0) (= (mod num 5) 0)) "FizzBuzz")
+        ((= (mod num 3) 0) "Fizz")
+        ((= (mod num 5) 0) "Buzz")
+        (t (write-to-string num)))))
+```
+
+During the 70's, after the appearance of Lisp, ML (Meta Language) started to take shape,
+this language was envisioned to aid the theorem prover LCF. Its syntax resembles the one
+of mathematical functions and while it permits a functional style, it is still impure and
+imperative, however, it makes heavy usage of pattern matching. Also, its type system
+includes algebraic data types, type inference, parametric polymorphism and static typing.
+
+
+
+```ocaml
+(* A ML (actually OCaml) fizzbuzz example *)
+let rec range a b accum =
+  if a > b then accum
+  else range a (b - 1) (b :: accum)
+
+let fizzbuzz xs = 
+  let f = function
+    | n when n mod 15 == 0 -> "FizzBuzz"
+    | n when n mod 3 == 0  -> "Fizz"
+    | n when n mod 5 == 0  -> "Buzz"
+    | n -> string_of_int n
+  in xs |> List.map f
+```
 
 - NOTE Turing machine \[O(n \log{n})\] or \[O(\log{n})\] added complexity when emulating another
   computing model.
@@ -126,11 +174,61 @@ two engineers and they followed the philosophy "do one thing, but do it well". T
 the C language was designed and evolved ergonomically with UNIX. The result was a language that
 was well structured and has the features that were needed to create a functional system.
 
-As C continued with its development, another new player came around in the landscape of
-programming languages, Haskell.
+```c
+/* A C fizzbuzz example */
+#include <stdio.h>
+
+int main(void) {
+    for(int i=1; i<=100; ++i) {
+        if (i % 3 == 0)
+            printf("Fizz");
+        if (i % 5 == 0)
+            printf("Buzz");
+        if ((i % 3 != 0) && (i % 5 != 0))
+            printf("number=%d", i);
+        printf("\n");
+    }
+
+    return 0;
+}
+```
+
+As C continued with its development, another new player joined in the landscape of programming
+languages, a language that tried to unite all the features that defined functional languages.
+Its chosen name, Haskell, in honor to Haskell Curry.
+
+The Haskell 1.0 language definition was released in 1990 after a meeting at the Functional
+Programming Languages and Programming Architecture conference in 1987 that discussed the
+situation in the functional community, there were many non-strict purely functional languages
+but there was a lack of a common open source language.
+
+Haskell allows to easily express pattern matching, list comprehensions, lambdas and many other
+constructs, it also features lazy evaluation (non-strictness), type polymorphism and behavior
+polymorphism through typeclasses. Since it is a purely functional programming language, its
+functions do not perform side effects, its variables are not mutable and almost everything is
+an expression and has a type.
+
+This set of features allows programmers to express themselves in a concise manner and to provide
+features that can be composed together in an orthogonal manner, i.e., the primitive concepts
+are independent in the sense that they can be learned separately and then easily pieced together
+to form a new feature without having to deal with corner cases.
+
+```haskell
+-- A Haskell fizzbuzz example
+fizz :: Int -> String
+fizz n | n `mod` 15 == 0  = "FizzBuzz"
+       | n `mod` 3  == 0  = "Fizz"
+       | n `mod` 5  == 0  = "Buzz"
+       | otherwise        = show n
+
+main :: IO ()
+main = mapM_ putStrLn $ map fizz [1..100]
+```
 
 # What is programming??
 If we look up the meaning of programming, a definition like the following might pop
 up: "programming is the action of generating a sequence of instructions for a machine
 to complete a specific task". While that is true, it imposes a specific  paradigm 
 (the imperative) where multiple can be used.
+
+# Means of abstraction
