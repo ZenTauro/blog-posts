@@ -225,6 +225,74 @@ main :: IO ()
 main = mapM_ putStrLn $ map fizz [1..100]
 ```
 
+Additionally, during the 90s, c++ gained the relevant features that make the language stand where
+it is today. It started in 1982 as a superset of the c programming language, supporting classes,
+however, with time, it started adding many more features.
+
+The most prominent features in c++ are:
+ - RAII, a resource management system where variables are created and initialized with a constructor
+   and once they go out of scope, their destructor is called freeing its corresponding resources.
+ - Monomorphisation, in order to avoid overhead in polymorphic (ie, generic) containers, functions,
+   etc. they are specialized, reducing runtime but increasing binary size.
+ - Exceptions, they provide a really useful error handling mechanism, however, they interrupt normal
+   control flow.
+ - Behavior polymorphism through inheritance.
+ - Zero cost abstractions, you only pay for what you use, and what you pay for will introduce
+   negligible runtime overhead.
+
+```cpp
+#include <iostream>
+
+using namespace std;
+int main () {
+	for (int i = 1; i <= 100; i++) {
+		if ((i % 15) == 0)
+		    cout << "FizzBuzz\n";
+		else if ((i % 3) == 0)
+		    cout << "Fizz\n";
+		else if ((i % 5) == 0)
+		    cout << "Buzz\n";
+		else
+		    cout << i << "\n";
+	}
+	return 0;
+}
+```
+
+With the dawn of a new millennia Java was created under the lemma of "Write once, run anywhere"
+it featured a syntax similar to c++ and was strictly object oriented. Java boasted its developer
+friendliness, productivity, enterprise level and ease of use. This was based on the fact that
+the language featured the following properties:
+  - Garbage collector
+  - Virtual machine with a JIT compiler
+  - Byte compilation for portability
+  - A huge standard library
+  - All the features necessary for object orientation
+
+
+
+```java
+package start;
+
+import java.lang.System;
+
+public class Main {
+  public static void main(String[] args) {
+    for (int i=0; i<100; i++) {
+      if (i % 15 == 0) {
+        System.out.println("FizzBuzz");
+      } else if (i % 5 == 0) {
+        System.out.println("Buzz");
+      } else if (i % 3 == 0) {
+        System.out.println("Fizz");
+      } else {
+        System.out.println(i);
+      }
+    }
+  }
+}
+```
+
 # What is programming??
 If we look up the meaning of programming, a definition like the following might pop
 up: "programming is the action of generating a sequence of instructions for a machine
