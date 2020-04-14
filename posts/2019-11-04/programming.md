@@ -337,4 +337,20 @@ generating a sequence of instructions, when programming, most of the
 times, you don't program only for yourself, you also contribute to
 others and those others will need to read and understand your code.
 
+Also, during development things change, and in order to be able to
+keep developing without rewriting everything with every little
+variation one needs to commit to certain interfaces. If those
+interfaces are not well design and organized, keeping those commitments
+will be hard, the quality of the software may decrease and the
+development cycle will be highly damage. That's why programming also
+encompasses the design and structure of the programs and libraries,
+the architectural process of piecing together the components that
+make up a system.
+
+With this in mind, we can think of programming languages as toolboxes
+that provide us with tools to construct efficient and maintainable
+software. In those tools we can find type systems, modules, frameworks
+written with design patterns in mind, standard libraries, etc.
+
 # Means of abstraction
+So far, we have discussed the 
